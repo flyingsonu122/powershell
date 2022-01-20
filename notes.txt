@@ -1,1 +1,0 @@
-open powershell and type $PSVersionTable  

@@ -23,7 +23,7 @@ New-Item -Path 'D:\temp\Test Folder\Test File.txt' -ItemType File
 ```powershell
 Copy-Item 'D:\temp\Test Folder' 'D:\temp\Test Folder1'
 
-   # OR  
+    OR  
 
 Copy-Item 'D:\temp\Test Folder' -Destination 'D:\temp\Test Folder1'
 ```
@@ -33,7 +33,7 @@ Copy-Item 'D:\temp\Test Folder' -Destination 'D:\temp\Test Folder1'
 ```powershell
 Copy-Item 'D:\temp\Test Folder\Test File.txt' 'D:\temp\Test Folder1\Test File1.txt'
 
-   # OR  
+    OR  
 
 Copy-Item -Filter *.txt -Path 'D:\temp\Test Folder' -Recurse -Destination 'D:\temp\Test Folder1'
 ```
@@ -43,7 +43,7 @@ Copy-Item -Filter *.txt -Path 'D:\temp\Test Folder' -Recurse -Destination 'D:\te
 ```powershell
 Remove-Item 'D:\temp\Test Folder1'
 
-  #  OR  
+    OR  
 
 Remove-Item 'D:\temp\Test Folder' -Recurse
 ```
@@ -54,7 +54,7 @@ Remove-Item 'D:\temp\Test Folder' -Recurse
 ```powershell
 Remove-Item 'D:\temp\Test Folder\test.txt'
 
-   # OR  
+    OR  
 
 Remove-Item 'D:\temp\Test Folder\test.txt' -Recurse
 ```
@@ -129,11 +129,11 @@ Test-Path D:\temp\test\test1.txt
 ```powershell
 Get-Date
 
-   # OR
+    OR
 
 get-date
 
-$output: Thursday, 20 January, 2022 01:42:33 AM
+output: Thursday, 20 January, 2022 01:42:33 AM
 
 # both cmdlets works bcz not case sensitive
 
@@ -141,13 +141,13 @@ Get-Date -DisplayHint Date
 
 # this above cmdlet displays only date
 
-$output: Thursday, 20 January, 2022
+output: Thursday, 20 January, 2022
 
 Get-Date -DisplayHint Time
 
 # this above cmdlet displays only time
 
-$output: 01:43:49 AM
+output: 01:43:49 AM
 ```
 
 **to set  date**
@@ -157,10 +157,263 @@ you need administrator permissions
 ```powershell
 set-date -Date (Get-Date).AddDays(1)
 
-    # OR
+     OR
 
 set-date -Date (Get-Date).AddDays(-1)
 ```
+
+**to create file**
+
+file can be of any **type** be it .txt, .xml, etc.
+
+```powershell
+New-Item D:\temp\test\test.txt
+```
+**to add content in file**
+
+```powershell
+Set-Content D:\temp\test\test.txt 'Hello Sonu Kushwaha'
+```
+**to get content of a file**
+
+```powershell
+Get-Content D:\temp\test\test.txt
+```
+**to clear content of a file**
+
+```powershell
+Clear-Content D:\temp\test\test.txt
+```
+**to append content of a file**
+
+this text will be added in **new line**
+
+```powershell
+Add-Content D:\temp\test\test.txt 'World!'
+```
+**to create an Alias**
+
+```powershell
+New-Alias -Name help -Value Get-Help 
+```
+**to see all Alias**
+
+```powershell
+Get-Alias
+```
+
+
+
+
+
+
+**declare an array**
+
+```powershell
+$A = 1, 2, 3, 4
+
+   OR
+
+$A = 1..4  
+```
+**to get type of an array**
+
+```powershell
+$A.getType()
+```
+
+**to create an array**
+
+```powershell
+$array = @("item1", "item2", "item3")
+
+    OR
+
+$myList = @(0..4)
+
+write-host("Print array")
+$myList
+
+```
+**to get elements of an array**
+
+```powershell
+for($i = 0; $i -lt $array.length; $i++){ $array[$i] }
+```
+
+**more about an array**
+
+```powershell
+$myList = 5.6, 4.5, 3.3, 13.2, 4.0, 34.33, 34.0, 45.45, 99.993, 11123
+
+write-host("Print all the array elements")
+$myList
+
+write-host("Get the length of array")
+$myList.Length
+
+write-host("Get Second element of array")
+$myList[1]
+
+write-host("Get partial array")
+$subList = $myList[1..3]
+
+write-host("print subList")
+$subList
+
+write-host("Assign values")
+$myList[1] = 10
+$myList
+
+```
+
+**foreach loop**
+
+```powershell
+foreach ($element in $array) { $element }
+
+    OR
+
+$array | foreach { $_ }
+```
+
+**while loop**
+
+```powershell
+$counter = 0;
+
+while($counter -lt $array.length){
+   $array[$counter]
+   $counter += 1
+}
+```
+
+**dowhile loop**
+
+```powershell
+$counter = 0;
+
+do {
+   $array[$counter]
+   $counter += 1
+} while($counter -lt $array.length)
+```
+
+**if statement**
+
+```powershell
+$x = 10
+
+if($x -le 20){
+   write-host("This is if statement")
+}
+
+```
+
+**if else statement**
+
+```powershell
+$x = 30
+
+if($x -le 20){
+   write-host("This is if statement")
+}else {
+   write-host("This is else statement")
+}
+```
+**else if statement**
+
+```powershell
+$x = 30
+
+if($x -eq 10){
+   write-host("Value of X is 10")
+} elseif($x -eq 20){
+   write-host("Value of X is 20")
+} elseif($x -eq 30){
+   write-host("Value of X is 30")
+} else {
+   write-host("This is else statement")
+}
+```
+**nested if statement**
+
+```powershell
+$x = 30
+$y = 10
+
+if($x -eq 30){
+   if($y -eq 10) {
+      write-host("X = 30 and Y = 10")
+   }
+}   
+```
+**switch case**
+
+```powershell
+switch(3){
+   1 {"One"}
+   2 {"Two"}
+   3 {"Three"}
+   4 {"Four"}
+   3 {"Three Again"}
+}
+```
+
+
+**switch with break**
+
+```powershell
+switch(3){
+   1 {"One"}
+   2 {"Two"}
+   3 {"Three"; break }
+   4 {"Four"}
+   3 {"Three Again"}
+}
+```
+
+**switch with array as input**
+
+```powershell
+switch(4,2){
+   1 {"One"}
+   2 {"Two"}
+   3 {"Three"; break }
+   4 {"Four"}
+   3 {"Three Again"}
+}
+```
+
+**To get process running on system**
+
+```powershell
+Get-Process [r-s]*
+
+   OR
+
+Get-Process
+
+   more on it
+
+Get-Service * | Sort-Object ServiceType `
+| Format-Table Name, ServiceType, Status -AutoSize
+```
+**backticks**
+```powershell
+Write-host "Title Subtitle"
+
+   to add new line
+
+Write-host "Title `nSubtitle"
+
+   to add tab
+
+Write-host "Title `tSubtitle"
+```
+
+
+
 
 
 
