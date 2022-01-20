@@ -411,6 +411,60 @@ Write-host "Title `nSubtitle"
 
 Write-host "Title `tSubtitle"
 ```
+**get location**
+
+same as **pwd** ( present working directory )
+```powershell
+Get-Location
+```
+**sort and get unique values**
+
+```powershell
+$list = "one","two","two","three","four","five"
+
+$list | sort | get-unique
+```
+**measure object**
+
+```powershell
+
+get-content D:\temp\test\test.txt | measure-object -character -line -word
+```
+**files present in current directory and its property**
+
+```powershell
+Get-ChildItem
+
+   other
+
+Get-ChildItem | Measure-Object
+```
+**compare files**
+
+```powershell
+Compare-Object -ReferenceObject $(Get-Content D:\temp\test\test.txt) -DifferenceObject $(Get-Content D:\temp\test\test1.txt)
+
+   more on it
+
+Compare-Object -ReferenceObject $(Get-Content D:\temp\test\test.txt) -DifferenceObject $(Get-Content D:\temp\test\test1.txt) -IncludeEqual
+
+```
+
+**format list**
+
+```powershell
+$A = Get-ChildItem D:\temp\test\*.txt
+Format-List -InputObject $A
+```
+**get service list**
+
+```powershell
+Get-Service
+
+   OR
+
+Get-Service | Format-List
+```
 
 
 
@@ -421,7 +475,9 @@ Write-host "Title `tSubtitle"
 
 
 
+<br><br><br><br>
 
 
+## Source [tutorialspoint.com/powershell/powershell_quick_guide.htm](https://www.tutorialspoint.com/powershell/powershell_quick_guide.htm)
 
 
